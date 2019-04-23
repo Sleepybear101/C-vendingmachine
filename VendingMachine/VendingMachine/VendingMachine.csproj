@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeheerTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeheerTool.Designer.cs">
+      <DependentUpon>BeheerTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="uProduct.Designer.cs">
       <DependentUpon>uProduct.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BeheerTool.resx">
+      <DependentUpon>BeheerTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
