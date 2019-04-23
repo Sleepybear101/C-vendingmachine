@@ -41,25 +41,43 @@ namespace VendingMachine
                 string Nummer = dr[8].ToString();
                 string Aantal = dr[4].ToString();
 
+              Image newImage = byteArrayToImage(myImage);
+
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
                 proitem.ProductAantal = Aantal;
+                proitem.afbeelding = newImage;
                 //proitem.afbeelding = new Bitmap(new MemoryStream(myImage));
                 //pictureBox1.Image = new Bitmap(new MemoryStream(myImage));
                 Productenlist.Add(proitem);
                 idProducten.Add(id);
-              // Image newImage = byteArrayToImage(image);
 
             }
                 flowLayoutPanel1.Controls.AddRange(Productenlist.ToArray());
 
         }
-
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
+                ms.Write(byteArrayIn, 0, byteArrayIn.Length);
+                Image returnImage = Image.FromStream(ms, true);
+            }
+            catch { }
+            return returnImage;
+        }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
- MessageBox.Show("Show");
             SetProduct();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            BeheerTool Beheerder = new BeheerTool();
+            Beheerder.ShowDialog();
+     
         }
     }
 }
