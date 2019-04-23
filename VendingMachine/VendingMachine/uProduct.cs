@@ -80,5 +80,10 @@ namespace VendingMachine
         {
 
         }
+
+        private void UProduct_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
