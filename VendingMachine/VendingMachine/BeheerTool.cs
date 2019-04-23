@@ -31,9 +31,10 @@ namespace VendingMachine
         private void GetInfo()
         {
           con = new SqlDbConnection();
-         con.SqlQuery("SELECT `id_product`,`Naam`,`Prijs`,`AantalGekocht`,`Voorraad`  FROM snoepmachine.producten");
+          con.SqlQuery("SELECT `id_product`,`Naam`,`Prijs`,`AantalGekocht`,`Voorraad`  FROM snoepmachine.producten"));
 
             DataSet ds = new DataSet();
+          
             dataGridView1.DataSource = ds.Tables["producten"];
          
 
