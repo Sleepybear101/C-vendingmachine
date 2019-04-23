@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.IO;
-
 namespace VendingMachine
 {
     public partial class Form1 : Form
     {
         public SqlDbConnection con;
+        Image returnImage;
         List<uProduct> Productenlist;
         List<string> idProducten;
         public Form1()
@@ -35,26 +34,24 @@ namespace VendingMachine
                 uProduct proitem = new uProduct(this);
 
                 byte[] myImage = (byte[])dr[5];
+                
 
                 string id = dr[1].ToString();
                 string Prijs = dr[2].ToString();
                 string Nummer = dr[8].ToString();
                 string Aantal = dr[4].ToString();
 
-              Image newImage = byteArrayToImage(myImage);
-
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
                 proitem.ProductAantal = Aantal;
-                proitem.afbeelding = newImage;
-                //proitem.afbeelding = new Bitmap(new MemoryStream(myImage));
+                Image img1 = byteArrayToImage(myImage);
+                proitem.afbeelding = img1;
                 //pictureBox1.Image = new Bitmap(new MemoryStream(myImage));
                 Productenlist.Add(proitem);
                 idProducten.Add(id);
-
+          
             }
                 flowLayoutPanel1.Controls.AddRange(Productenlist.ToArray());
-
         }
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
@@ -62,12 +59,11 @@ namespace VendingMachine
             {
                 MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
                 ms.Write(byteArrayIn, 0, byteArrayIn.Length);
-                Image returnImage = Image.FromStream(ms, true);
+                returnImage = Image.FromStream(ms, true);//Exception occurs here
             }
             catch { }
             return returnImage;
         }
-
         private void Form1_Load_1(object sender, EventArgs e)
         {
             SetProduct();
