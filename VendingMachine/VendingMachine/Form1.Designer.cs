@@ -50,6 +50,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button20 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button19
@@ -74,9 +75,9 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(250, 330);
+            this.button17.Location = new System.Drawing.Point(252, 330);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(151, 25);
+            this.button17.Size = new System.Drawing.Size(145, 25);
             this.button17.TabIndex = 54;
             this.button17.Text = "Clear";
             this.button17.UseVisualStyleBackColor = true;
@@ -256,11 +257,22 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(212, 302);
             this.flowLayoutPanel1.TabIndex = 57;
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(250, 440);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(96, 55);
+            this.button20.TabIndex = 58;
+            this.button20.Text = "Beheerder";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 438);
+            this.ClientSize = new System.Drawing.Size(420, 507);
+            this.Controls.Add(this.button20);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
@@ -315,6 +327,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button20;
     }
 }
 
