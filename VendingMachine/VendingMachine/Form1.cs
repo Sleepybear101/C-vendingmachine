@@ -16,6 +16,7 @@ namespace VendingMachine
         Image returnImage;
         List<uProduct> Productenlist;
         List<string> idProducten;
+        string name;
         public Form1()
         {
             InitializeComponent();
