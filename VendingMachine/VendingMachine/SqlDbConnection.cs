@@ -16,31 +16,30 @@ namespace VendingMachine
         private DataTable _dt;
         private DataSet _ds;
 
-        public SqlDbConnection()
-        {
-            _con = new MySqlConnection("Server=localhost; Database = snoepmachine; ;username=root;password=");
-            _con.Open();
-
-        }
-
-        public void SqlQuery(string queryText)
-        {
-            Cmd = new MySqlCommand(queryText, _con);
-        }
-
-        public DataTable QueryEx()
-        {
-            _da = new MySqlDataAdapter(Cmd);
-            _dt = new DataTable();
-            _da.Fill(_dt);
-
-            return _dt;
-        }
-
-        public void NonQueryEx()
-        {
-            Cmd.ExecuteNonQuery();
-        }
+        public SqlDbConnection() { 
+        _con = new MySqlConnection("Server=localhost; Database = snoepmachine; ;username=root;password=");
+        _con.Open();
 
     }
+
+    public void SqlQuery(string queryText)
+    {
+    Cmd = new MySqlCommand(queryText, _con);
+    }
+
+    public DataTable QueryEx()
+    {
+    _da = new MySqlDataAdapter(Cmd);
+    _dt = new DataTable();
+    _da.Fill(_dt);
+
+    return _dt;
+    }
+
+    public void NonQueryEx()
+    {
+    Cmd.ExecuteNonQuery();
+    }
+
+}
 }

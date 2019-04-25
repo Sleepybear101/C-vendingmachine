@@ -29,20 +29,6 @@ namespace VendingMachine
             con.SqlQuery("SELECT * FROM `producten`");
             dataGridView1.DataSource = con.QueryEx();
 
-
-        DataTable table = new DataTable();
-
-
-        private void GetInfo()
-        {
-       /*     con = new SqlDbConnection();
-            con.SqlQuery("SELECT `id_product`,`Naam`,`Prijs`,`AantalGekocht`,`Voorraad`  FROM snoepmachine.producten"));
-
-            DataSet ds = new DataSet();
-
-            dataGridView1.DataSource = ds.Tables["producten"];
-
-
         }
 
         private void SearchTextBox_TextChanged_1(object sender, EventArgs e)
@@ -52,7 +38,7 @@ namespace VendingMachine
 
         }
 
-            dataGridView1.DataSource = ds.Tables["producten"];
+
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
