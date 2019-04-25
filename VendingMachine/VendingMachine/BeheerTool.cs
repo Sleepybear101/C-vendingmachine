@@ -26,25 +26,25 @@ namespace VendingMachine
         }
 
         DataTable table = new DataTable();
-    
+
 
         private void GetInfo()
         {
-          con = new SqlDbConnection();
-          con.SqlQuery("SELECT `id_product`,`Naam`,`Prijs`,`AantalGekocht`,`Voorraad`  FROM snoepmachine.producten"));
+       /*     con = new SqlDbConnection();
+            con.SqlQuery("SELECT `id_product`,`Naam`,`Prijs`,`AantalGekocht`,`Voorraad`  FROM snoepmachine.producten"));
 
             DataSet ds = new DataSet();
-          
+
             dataGridView1.DataSource = ds.Tables["producten"];
-         
-
-                dataGridView1.DataSource = ds.Tables["producten"];
 
 
-            }
+            dataGridView1.DataSource = ds.Tables["producten"];
 
     */
         }
 
+
     }
+
+
 }
