@@ -34,7 +34,7 @@ namespace VendingMachine
             {
                 uProduct proitem = new uProduct(this);
 
-                byte[] myImage = (byte[])dr[5];
+                //byte[] myImage = (byte[])dr[5];
                 
 
                 string id = dr[1].ToString();
@@ -45,8 +45,8 @@ namespace VendingMachine
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
                 proitem.ProductAantal = Aantal;
-                Image img1 = byteArrayToImage(myImage);
-                proitem.afbeelding = img1;
+                //Image img1 = byteArrayToImage(myImage);
+                //proitem.afbeelding = img1;
                 //pictureBox1.Image = new Bitmap(new MemoryStream(myImage));
                 Productenlist.Add(proitem);
                 idProducten.Add(id);
