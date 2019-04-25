@@ -14,13 +14,15 @@ namespace VendingMachine
         public MySqlCommand Cmd;
         private MySqlDataAdapter _da;
         private DataTable _dt;
-
+        private DataSet _ds;
 
         public SqlDbConnection()
         {
             _con = new MySqlConnection("Server=localhost; Database = snoepmachine; ;username=root;password=");
             _con.Open();
+
         }
+
         public void SqlQuery(string queryText)
         {
             Cmd = new MySqlCommand(queryText, _con);
