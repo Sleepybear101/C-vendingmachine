@@ -49,8 +49,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlProduct = new System.Windows.Forms.FlowLayoutPanel();
             this.button20 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button19
@@ -58,7 +59,7 @@
             this.button19.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button19.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
             this.button19.FlatAppearance.BorderSize = 60;
-            this.button19.Location = new System.Drawing.Point(22, 349);
+            this.button19.Location = new System.Drawing.Point(22, 366);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(194, 58);
             this.button19.TabIndex = 56;
@@ -66,7 +67,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(301, 383);
+            this.button18.Location = new System.Drawing.Point(280, 383);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(100, 24);
             this.button18.TabIndex = 55;
@@ -244,36 +245,46 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(60, 9);
+            this.label1.Location = new System.Drawing.Point(69, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 19);
             this.label1.TabIndex = 36;
             this.label1.Text = "Snoepautomaat";
             // 
-            // flowLayoutPanel1
+            // pnlProduct
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(22, 41);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(212, 302);
-            this.flowLayoutPanel1.TabIndex = 57;
+            this.pnlProduct.Location = new System.Drawing.Point(22, 41);
+            this.pnlProduct.Name = "pnlProduct";
+            this.pnlProduct.Size = new System.Drawing.Size(212, 302);
+            this.pnlProduct.TabIndex = 57;
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(250, 440);
+            this.button20.Location = new System.Drawing.Point(303, 438);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(96, 55);
+            this.button20.Size = new System.Drawing.Size(94, 45);
             this.button20.TabIndex = 58;
             this.button20.Text = "Beheerder";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(80, 452);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "label2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 507);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button20);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.pnlProduct);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
@@ -297,7 +308,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,8 +336,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel pnlProduct;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Label label2;
     }
 }
 
