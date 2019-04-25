@@ -12,12 +12,14 @@ namespace VendingMachine
 {
     public partial class uProduct : UserControl
     {
+        private Form1 _parent;
         public uProduct(Form1 parent)
         {
             InitializeComponent();
             _parent = parent;
         }
-        private Form1 _parent;
+
+        
         private string Aantal;
         private string Nummer;
         private string Prijs;
