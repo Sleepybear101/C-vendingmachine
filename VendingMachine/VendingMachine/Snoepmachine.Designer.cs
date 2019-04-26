@@ -39,9 +39,14 @@
             this.textBoxNummer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+
+            this.labelWisselgeld = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+
             this.label4 = new System.Windows.Forms.Label();
             this.uNummerPad2 = new VendingMachine.uNummerPad();
             this.uNummerPad1 = new VendingMachine.uNummerPad();
+
             this.SuspendLayout();
             // 
             // button19
@@ -77,9 +82,10 @@
             this.labelSaldoUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelSaldoUser.Location = new System.Drawing.Point(355, 15);
             this.labelSaldoUser.Name = "labelSaldoUser";
+            this.labelSaldoUser.Size = new System.Drawing.Size(2, 19);
+
             this.labelSaldoUser.Size = new System.Drawing.Size(27, 22);
             this.labelSaldoUser.TabIndex = 37;
-            this.labelSaldoUser.Text = " 0";
             // 
             // label1
             // 
@@ -160,6 +166,31 @@
             this.label3.TabIndex = 62;
             this.label3.Text = "Wisselgeld";
             // 
+
+            // labelWisselgeld
+            // 
+            this.labelWisselgeld.AutoSize = true;
+            this.labelWisselgeld.BackColor = System.Drawing.Color.White;
+            this.labelWisselgeld.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelWisselgeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWisselgeld.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelWisselgeld.Location = new System.Drawing.Point(112, 487);
+            this.labelWisselgeld.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWisselgeld.Name = "labelWisselgeld";
+            this.labelWisselgeld.Size = new System.Drawing.Size(24, 19);
+            this.labelWisselgeld.TabIndex = 63;
+            this.labelWisselgeld.Text = " 0";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(271, 430);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 22);
+            this.button1.TabIndex = 64;
+            this.button1.Text = "Wisselgeld";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // label4
             // 
             this.label4.AutoSize = true;
@@ -193,11 +224,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
+            this.ClientSize = new System.Drawing.Size(433, 540);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.labelWisselgeld);
+
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(460, 487);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.label4);
+
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNummer);
@@ -230,8 +267,13 @@
         public System.Windows.Forms.Label labelSaldoUser;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
+
+        public System.Windows.Forms.Label labelWisselgeld;
+        private System.Windows.Forms.Button button1;
+
         public System.Windows.Forms.Label label4;
         private uNummerPad uNummerPad2;
+
     }
 }
 
