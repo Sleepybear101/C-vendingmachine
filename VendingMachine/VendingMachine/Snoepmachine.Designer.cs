@@ -41,7 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelWisselgeld = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelWisselgeldUser = new System.Windows.Forms.Label();
             this.uNummerPad2 = new VendingMachine.uNummerPad();
             this.uNummerPad1 = new VendingMachine.uNummerPad();
             this.SuspendLayout();
@@ -127,7 +127,6 @@
             this.button16.TabIndex = 55;
             this.button16.Text = "Koop";
             this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.Button16_Click);
             // 
             // textBoxNummer
             // 
@@ -190,19 +189,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // label4
+            // labelWisselgeldUser
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(108, 358);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 19);
-            this.label4.TabIndex = 63;
-            this.label4.Text = " 0";
+            this.labelWisselgeldUser.AutoSize = true;
+            this.labelWisselgeldUser.BackColor = System.Drawing.Color.White;
+            this.labelWisselgeldUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelWisselgeldUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWisselgeldUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelWisselgeldUser.Location = new System.Drawing.Point(108, 358);
+            this.labelWisselgeldUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWisselgeldUser.Name = "labelWisselgeldUser";
+            this.labelWisselgeldUser.Size = new System.Drawing.Size(24, 19);
+            this.labelWisselgeldUser.TabIndex = 63;
+            this.labelWisselgeldUser.Text = " 0";
             // 
             // uNummerPad2
             // 
@@ -229,7 +228,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelWisselgeld);
             this.Controls.Add(this.button16);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelWisselgeldUser);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNummer);
@@ -266,7 +265,7 @@
         public System.Windows.Forms.Label labelWisselgeld;
         private System.Windows.Forms.Button button1;
 
-        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label labelWisselgeldUser;
         private uNummerPad uNummerPad2;
 
     }

@@ -154,7 +154,7 @@ namespace VendingMachine
 
             else
             {
-                labelWisselgeld.Text = labelSaldoUser.Text;
+                labelWisselgeldUser.Text = labelSaldoUser.Text;
                 labelSaldoUser.Text = "€ 0,00";
                 labelWisselgeld.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
@@ -187,5 +187,6 @@ namespace VendingMachine
                 MessageBox.Show("Geen product gevonden met het zelfde productnummer");
             }
         }
+
     }
 }

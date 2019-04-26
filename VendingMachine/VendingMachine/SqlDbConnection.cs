@@ -17,7 +17,7 @@ namespace VendingMachine
         private DataSet _ds;
 
         public SqlDbConnection() { 
-        _con = new MySqlConnection("Server=localhost; Database = snoepmachine; username=BeheerderVending; password=Y58N5wDDraG1wCUI");
+        _con = new MySqlConnection("Server=localhost; Database = snoepmachine; username=root; password=");
         _con.Open();
 
     }
