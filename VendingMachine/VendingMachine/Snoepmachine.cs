@@ -17,7 +17,7 @@ namespace VendingMachine
         {
             InitializeComponent();
             pnlProduct.Controls.Clear();
-            uNummerPad1.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad1_OnUserControlButtonClicked);
+            uNummerPad2.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad2_OnUserControlButtonClicked);
              Getinfo();
         }
 
@@ -107,7 +107,7 @@ namespace VendingMachine
             myForm.Show();
         }
 
-        protected void uNummerPad1_OnUserControlButtonClicked(object sender, EventArgs e)
+        protected void uNummerPad2_OnUserControlButtonClicked(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             if (focusedTextbox != null)
@@ -155,10 +155,18 @@ namespace VendingMachine
             {
                 labelWisselgeld.Text = labelSaldoUser.Text;
                 labelSaldoUser.Text = "€ 0,00";
-                labelWisselgeld.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
 
             }
+
+        }
+
+        private void Button16_Click(object sender, EventArgs e)
+        {
+            if (textBoxNummer.Text == Productenlist["Nummer"]){
+
+                }
+
 
         }
     }
