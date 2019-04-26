@@ -12,8 +12,8 @@ namespace VendingMachine
 {
     public partial class uProduct : UserControl
     {
-        private Form1 _parent;
-        public uProduct(Form1 parent)
+        private Snoepmachine _parent;
+        public uProduct(Snoepmachine parent)
         {
             InitializeComponent();
             _parent = parent;
@@ -55,7 +55,7 @@ namespace VendingMachine
             set
             {
                 Prijs = value;
-                label1.Text = "€ " + Prijs;
+                label1.Text = "€" + Prijs;
             }
             get
             {
@@ -78,14 +78,5 @@ namespace VendingMachine
             }
         }
 
-        private void Label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UProduct_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

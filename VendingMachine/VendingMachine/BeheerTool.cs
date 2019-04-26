@@ -37,9 +37,6 @@ namespace VendingMachine
 
 
         }
-
-
-
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             con = new SqlDbConnection();
@@ -53,12 +50,5 @@ namespace VendingMachine
 
 
         }
-
-
-
-
-
     }
-
-
 }

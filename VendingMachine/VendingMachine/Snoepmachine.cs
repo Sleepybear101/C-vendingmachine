@@ -11,17 +11,16 @@ using System.IO;
 
 namespace VendingMachine
 {
-    public partial class Form1 : Form
+    public partial class Snoepmachine : Form
     {
-        public Form1()
+        public Snoepmachine()
         {
             InitializeComponent();
             pnlProduct.Controls.Clear();
             uNummerPad1.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad1_OnUserControlButtonClicked);
-            //GetProduct Allespoduct = new GetProduct();
-            // Allespoduct.AlleProduct();
-            Getinfo();
+             Getinfo();
         }
+
         SqlDbConnection con;
         public string Nummer;
         public string Prijs;
@@ -43,17 +42,12 @@ namespace VendingMachine
             Productenlist = new List<uProduct>();
             idProducten = new List<string>();
             con.SqlQuery("SELECT * FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product");
+
             foreach (DataRow dr in con.QueryEx().Rows)
             {
                 uProduct proitem = new uProduct(this);
 
-
-                //byte[] myImage = (byte[])dr[5];
-
-
                 byte[] myImage = (byte[])dr[5];
-
-
 
                 id = dr[1].ToString();
                 Prijs = dr[2].ToString();
@@ -63,10 +57,6 @@ namespace VendingMachine
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
                 proitem.ProductAantal = Aantal;
-
-                //Image img1 = byteArrayToImage(myImage);
-                //proitem.afbeelding = img1;
-                //pictureBox1.Image = new Bitmap(new MemoryStream(myImage));
 
                 Img1 = byteArrayToImage(myImage);
                 proitem.afbeelding = Img1;
