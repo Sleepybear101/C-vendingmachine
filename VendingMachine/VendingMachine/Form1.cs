@@ -103,6 +103,7 @@ namespace VendingMachine
         {
             this.ActiveControl = textBoxNummer;
             textBoxNummer.Focus();
+            labelSaldoUser.Text = "€ 0,00";
         }
 
         private void textBoxNummer_Enter(object sender, EventArgs e)
@@ -143,6 +144,32 @@ namespace VendingMachine
                     }
                 }
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (labelSaldoUser.Text == "€ 0,00")
+            {
+                string message = "Om wisselgeld terug te krijgen moet u eerst uw saldo verhogen. Wilt u uw Saldo verhogen?";
+                string title = "Uw saldo is leeg";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    var myForm = new SaldoOpwaarderen(this);
+                    myForm.Show();
+                }
+            }
+
+            else
+            {
+                labelWisselgeld.Text = labelSaldoUser.Text;
+                labelSaldoUser.Text = "€ 0,00";
+                labelWisselgeld.Text = "€ 0,00";
+                MessageBox.Show("Wisselgeld is teruggestort");
+
+            }
+
         }
     }
 }

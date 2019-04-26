@@ -39,7 +39,8 @@
             this.textBoxNummer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelWisselgeld = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button19
@@ -75,9 +76,8 @@
             this.labelSaldoUser.Location = new System.Drawing.Point(249, 11);
             this.labelSaldoUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSaldoUser.Name = "labelSaldoUser";
-            this.labelSaldoUser.Size = new System.Drawing.Size(24, 19);
+            this.labelSaldoUser.Size = new System.Drawing.Size(2, 19);
             this.labelSaldoUser.TabIndex = 37;
-            this.labelSaldoUser.Text = " 0";
             // 
             // label1
             // 
@@ -163,26 +163,38 @@
             this.label3.TabIndex = 62;
             this.label3.Text = "Wisselgeld";
             // 
-            // label4
+            // labelWisselgeld
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(112, 487);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 19);
-            this.label4.TabIndex = 63;
-            this.label4.Text = " 0";
+            this.labelWisselgeld.AutoSize = true;
+            this.labelWisselgeld.BackColor = System.Drawing.Color.White;
+            this.labelWisselgeld.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelWisselgeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWisselgeld.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelWisselgeld.Location = new System.Drawing.Point(112, 487);
+            this.labelWisselgeld.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWisselgeld.Name = "labelWisselgeld";
+            this.labelWisselgeld.Size = new System.Drawing.Size(24, 19);
+            this.labelWisselgeld.TabIndex = 63;
+            this.labelWisselgeld.Text = " 0";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(271, 430);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 22);
+            this.button1.TabIndex = 64;
+            this.button1.Text = "Wisselgeld";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 540);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.labelWisselgeld);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNummer);
@@ -216,7 +228,8 @@
         public System.Windows.Forms.Label labelSaldoUser;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label labelWisselgeld;
+        private System.Windows.Forms.Button button1;
     }
 }
 
