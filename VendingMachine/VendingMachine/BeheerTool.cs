@@ -42,7 +42,7 @@ namespace VendingMachine
             con = new SqlDbConnection();
             string NieuwVoorraad = textBoxVoorraad.Text;
             string Product = searchTextBox.Text;
-            con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `Naam` =@produc");
+            con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `Naam` =@product");
             con.Cmd.Parameters.Add("@Voorraad", NieuwVoorraad);
             con.Cmd.Parameters.Add("@product", Product);
             con.NonQueryEx();
