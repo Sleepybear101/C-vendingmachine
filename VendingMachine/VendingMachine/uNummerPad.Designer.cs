@@ -213,18 +213,12 @@
             // 
             // buttonA
             // 
-            this.buttonA.BackgroundImage = global::VendingMachine.Properties.Resources.button_a;
-            this.buttonA.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonA.Location = new System.Drawing.Point(61, 9);
-            this.buttonA.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonA.Location = new System.Drawing.Point(12, 8);
+            this.buttonA.Location = new System.Drawing.Point(14, 8);
             this.buttonA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonA.Name = "buttonA";
             this.buttonA.Size = new System.Drawing.Size(45, 44);
-            this.buttonA.TabIndex = 55;
+            this.buttonA.TabIndex = 71;
             this.buttonA.Text = "A";
-            this.buttonA.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonA.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonA.UseVisualStyleBackColor = true;
             this.buttonA.Click += new System.EventHandler(this.ButtonClick);
             // 
@@ -232,6 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonA);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.button0);
             this.Controls.Add(this.button9);
@@ -247,10 +242,10 @@
             this.Controls.Add(this.buttonB);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonA);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "uNummerPad";
             this.Size = new System.Drawing.Size(180, 318);
+            this.Load += new System.EventHandler(this.UNummerPad_Load);
             this.ResumeLayout(false);
 
         }

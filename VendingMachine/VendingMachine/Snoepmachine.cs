@@ -36,8 +36,10 @@ namespace VendingMachine
         List<string> idProducten;
 
         public double prijsProduct;
-        public string Voorraadl;
+        public int Voorraadl;
         public double HuidigeSaldo;
+        
+        //Ophalen van producten voor usercontrol
         public void Getinfo()
         {
             SqlDbConnection con = new SqlDbConnection();
@@ -49,11 +51,11 @@ namespace VendingMachine
             {
                 uProduct proitem = new uProduct(this);
 
-                byte[] myImage = (byte[])dr[5];
+                byte[] myImage = (byte[])dr[4];
 
                 Prijs = dr[2].ToString();
-                Nummer = dr[8].ToString();
-                Aantal = dr[4].ToString();
+                Nummer = dr[7].ToString();
+                Aantal = dr[3].ToString();
 
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
@@ -83,6 +85,7 @@ namespace VendingMachine
 
             return returnImage;
         }
+        //Knop naar beheerdertool
         private void button20_Click(object sender, EventArgs e)
         {
             BeheerTool Beheerder = new BeheerTool();
@@ -94,7 +97,7 @@ namespace VendingMachine
         {
             this.ActiveControl = textBoxNummer;
             textBoxNummer.Focus();
-            labelSaldoUser.Text = "€ 0,00";
+            labelSaldoUser.Text = "0,00";
         }
       
     private void textBoxNummer_Enter(object sender, EventArgs e)
@@ -136,10 +139,10 @@ namespace VendingMachine
                 }
             }
         }
-
+        //Wisselgeld
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (labelSaldoUser.Text == "€ 0,00")
+            if (labelSaldoUser.Text == "0,00")
             {
                 string message = "Om wisselgeld terug te krijgen moet u eerst uw saldo verhogen. Wilt u uw Saldo verhogen?";
                 string title = "Uw saldo is leeg";
@@ -155,7 +158,7 @@ namespace VendingMachine
             else
             {
                 labelWisselgeldUser.Text = labelSaldoUser.Text;
-                labelSaldoUser.Text = "€ 0,00";
+                labelSaldoUser.Text = " 0,00";
                 labelWisselgeld.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
 
@@ -163,7 +166,9 @@ namespace VendingMachine
 
         }
 
-        private void Button16_Click(object sender, EventArgs e)
+    
+        // kopen van product
+        private void Button16_Click_1(object sender, EventArgs e)
         {
             SqlDbConnection con = new SqlDbConnection();
 
@@ -171,22 +176,39 @@ namespace VendingMachine
             {
                 MessageBox.Show("product gevonden met het zelfde productnummer");
 
-                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` = 'A12' ");
-               
-                     foreach (DataRow dr in con.QueryEx().Rows)
-                      {
-                  
-                          prijsProduct = Convert.ToDouble(dr[0]);
-                          HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
-                          HuidigeSaldo =-  prijsProduct  ;
-                      }
-                
+                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` =@nummer ");
+                con.Cmd.Parameters.Add("@Nummer", textBoxNummer.Text);
+
+                foreach (DataRow dr in con.QueryEx().Rows)
+                {
+
+                    prijsProduct = Convert.ToDouble(dr[0]);
+                    Voorraadl = Convert.ToInt32(dr[2]);
+                    Voorraadl = Voorraadl - 1;
+                    Nummer = dr[1].ToString();
+                    HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
+                }
+
+                if ( HuidigeSaldo >= prijsProduct)
+                {
+                    labelSaldoUser.Text = Convert.ToString(HuidigeSaldo - prijsProduct);
+                    con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `id_product`=@Nummer ");
+                    con.Cmd.Parameters.Add("@Voorraad", Voorraadl);
+                    con.Cmd.Parameters.Add("@Nummer", Nummer);
+
+                    con.NonQueryEx();
+                }
+                else
+                {
+                    MessageBox.Show("Saldo te laag");
+                }
             }
             else
             {
                 MessageBox.Show("Geen product gevonden met het zelfde productnummer");
             }
-        }
 
+
+        }
     }
 }
