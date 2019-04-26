@@ -41,7 +41,6 @@ namespace VendingMachine
                 textBoxSaldo.Text = "";
             }
 
-            textBoxSaldo.Text = huidigeSaldo.ToString("C");
         }
     }
 }

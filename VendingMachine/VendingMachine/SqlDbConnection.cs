@@ -36,6 +36,7 @@ namespace VendingMachine
     return _dt;
     }
 
+
     public void NonQueryEx()
     {
     Cmd.ExecuteNonQuery();

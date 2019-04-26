@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace VendingMachine
         {
             InitializeComponent();
             pnlProduct.Controls.Clear();
-            uNummerPad1.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad1_OnUserControlButtonClicked);
+            uNummerPad2.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad2_OnUserControlButtonClicked);
              Getinfo();
         }
 
@@ -33,9 +34,10 @@ namespace VendingMachine
         Image returnImage;
         List<uProduct> Productenlist;
         List<string> idProducten;
-        public DataRow dr;
 
-
+        public double prijsProduct;
+        public string Voorraadl;
+        public double HuidigeSaldo;
         public void Getinfo()
         {
             SqlDbConnection con = new SqlDbConnection();
@@ -49,7 +51,6 @@ namespace VendingMachine
 
                 byte[] myImage = (byte[])dr[5];
 
-                id = dr[1].ToString();
                 Prijs = dr[2].ToString();
                 Nummer = dr[8].ToString();
                 Aantal = dr[4].ToString();
@@ -63,7 +64,7 @@ namespace VendingMachine
 
                 Productenlist.Add(proitem);
 
-                idProducten.Add(id);
+                idProducten.Add(Nummer);
             }
             pnlProduct.Controls.AddRange(Productenlist.ToArray());
         }
@@ -95,8 +96,8 @@ namespace VendingMachine
             textBoxNummer.Focus();
             labelSaldoUser.Text = "€ 0,00";
         }
-
-        private void textBoxNummer_Enter(object sender, EventArgs e)
+      
+    private void textBoxNummer_Enter(object sender, EventArgs e)
         {
             focusedTextbox = (TextBox)sender;
         }
@@ -107,7 +108,7 @@ namespace VendingMachine
             myForm.Show();
         }
 
-        protected void uNummerPad1_OnUserControlButtonClicked(object sender, EventArgs e)
+        protected void uNummerPad2_OnUserControlButtonClicked(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             if (focusedTextbox != null)
@@ -160,6 +161,31 @@ namespace VendingMachine
 
             }
 
+        }
+
+        private void Button16_Click(object sender, EventArgs e)
+        {
+            SqlDbConnection con = new SqlDbConnection();
+
+            if (idProducten.Contains(textBoxNummer.Text))
+            {
+                MessageBox.Show("product gevonden met het zelfde productnummer");
+
+                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` = 'A12' ");
+               
+                     foreach (DataRow dr in con.QueryEx().Rows)
+                      {
+                  
+                          prijsProduct = Convert.ToDouble(dr[0]);
+                          HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
+                          HuidigeSaldo =-  prijsProduct  ;
+                      }
+                
+            }
+            else
+            {
+                MessageBox.Show("Geen product gevonden met het zelfde productnummer");
+            }
         }
     }
 }
