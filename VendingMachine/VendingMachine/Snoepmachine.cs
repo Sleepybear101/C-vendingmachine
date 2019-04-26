@@ -153,7 +153,7 @@ namespace VendingMachine
 
             else
             {
-                labelWisselgeld.Text = labelSaldoUser.Text;
+                labelWisselgeldUser.Text = labelSaldoUser.Text;
                 labelSaldoUser.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
 
@@ -161,13 +161,6 @@ namespace VendingMachine
 
         }
 
-        private void Button16_Click(object sender, EventArgs e)
-        {
-            if (textBoxNummer.Text == Productenlist["Nummer"]){
-
-                }
-
-
-        }
+      
     }
 }

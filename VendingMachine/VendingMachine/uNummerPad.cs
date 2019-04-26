@@ -23,6 +23,8 @@ namespace VendingMachine
 
         private void ButtonClick(object sender, EventArgs e)
         {
+      
+          
 
             Button btnNumber = sender as Button;
             switch (btnNumber.Text)
