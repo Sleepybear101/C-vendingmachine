@@ -13,9 +13,9 @@ namespace VendingMachine
     public partial class SaldoOpwaarderen : Form
     {
         public decimal huidigeSaldo;
-        public Form1 _Form1;
+        public Snoepmachine _Form1;
 
-        public SaldoOpwaarderen(Form1 form1)
+        public SaldoOpwaarderen(Snoepmachine form1)
         {
             InitializeComponent();
             _Form1 = form1;

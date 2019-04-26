@@ -75,7 +75,6 @@
             this.label7.Size = new System.Drawing.Size(38, 19);
             this.label7.TabIndex = 45;
             this.label7.Text = "A00";
-            this.label7.Click += new System.EventHandler(this.Label7_Click);
             // 
             // uProduct
             // 
@@ -87,7 +86,6 @@
             this.Controls.Add(this.label7);
             this.Name = "uProduct";
             this.Size = new System.Drawing.Size(183, 55);
-            this.Load += new System.EventHandler(this.UProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
