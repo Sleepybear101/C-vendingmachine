@@ -97,6 +97,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Name = "BeheerTool";
             this.Text = "BeheerTool";
+            this.Click += new System.EventHandler(this.BtnUpdate_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

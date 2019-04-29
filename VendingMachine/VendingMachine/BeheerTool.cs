@@ -15,11 +15,13 @@ namespace VendingMachine
     {
 
         public SqlDbConnection con;
+        public Snoepmachine _Form1;
 
-        public BeheerTool()
+        public BeheerTool(Snoepmachine form1)
         {
             InitializeComponent();
             mySqlConnection();
+            _Form1 = form1;
         }
 
         private void mySqlConnection()
@@ -47,7 +49,7 @@ namespace VendingMachine
             con.Cmd.Parameters.Add("@product", Product);
             con.NonQueryEx();
             mySqlConnection();
-
+            _Form1.Getinfo();
 
         }
     }

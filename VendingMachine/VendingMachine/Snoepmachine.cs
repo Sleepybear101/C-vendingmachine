@@ -17,7 +17,6 @@ namespace VendingMachine
         public Snoepmachine()
         {
             InitializeComponent();
-            pnlProduct.Controls.Clear();
             uNummerPad2.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad2_OnUserControlButtonClicked);
              Getinfo();
         }
@@ -38,7 +37,8 @@ namespace VendingMachine
         public double prijsProduct;
         public int Voorraadl;
         public double HuidigeSaldo;
-        
+
+        public byte[] myImage;
         //Ophalen van producten voor usercontrol
         public void Getinfo()
         {
@@ -51,7 +51,7 @@ namespace VendingMachine
             {
                 uProduct proitem = new uProduct(this);
 
-                byte[] myImage = (byte[])dr[4];
+                myImage = (byte[])dr[4];
 
                 Prijs = dr[2].ToString();
                 Nummer = dr[7].ToString();
@@ -68,6 +68,7 @@ namespace VendingMachine
 
                 idProducten.Add(Nummer);
             }
+            pnlProduct.Controls.Clear();
             pnlProduct.Controls.AddRange(Productenlist.ToArray());
         }
 
@@ -86,12 +87,7 @@ namespace VendingMachine
             return returnImage;
         }
         //Knop naar beheerdertool
-        private void button20_Click(object sender, EventArgs e)
-        {
-            BeheerTool Beheerder = new BeheerTool();
-            Beheerder.ShowDialog();
-
-        }
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -174,9 +170,8 @@ namespace VendingMachine
 
             if (idProducten.Contains(textBoxNummer.Text))
             {
-                MessageBox.Show("product gevonden met het zelfde productnummer");
-
-                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` =@nummer ");
+          
+                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` ,`Afbeelding`FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` =@nummer ");
                 con.Cmd.Parameters.Add("@Nummer", textBoxNummer.Text);
 
                 foreach (DataRow dr in con.QueryEx().Rows)
@@ -184,31 +179,57 @@ namespace VendingMachine
 
                     prijsProduct = Convert.ToDouble(dr[0]);
                     Voorraadl = Convert.ToInt32(dr[2]);
-                    Voorraadl = Voorraadl - 1;
                     Nummer = dr[1].ToString();
+                    myImage = (byte[])dr[3];
+                  
                     HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
                 }
 
-                if ( HuidigeSaldo >= prijsProduct)
+                if ( HuidigeSaldo >= prijsProduct )
                 {
+                    Voorraadl = Voorraadl - 1;
                     labelSaldoUser.Text = Convert.ToString(HuidigeSaldo - prijsProduct);
                     con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `id_product`=@Nummer ");
                     con.Cmd.Parameters.Add("@Voorraad", Voorraadl);
                     con.Cmd.Parameters.Add("@Nummer", Nummer);
 
                     con.NonQueryEx();
+
+                    con.SqlQuery("INSERT INTO `gekochtproduct`(`Product`, `Datetime`) VALUES (@Nummer,NOW())");
+                    con.Cmd.Parameters.Add("@Nummer", Nummer);
+                    con.NonQueryEx();
+                    Img1 = byteArrayToImage(myImage);
+                    button19.BackgroundImage = Img1;
                 }
+                else if(Voorraadl <= 0)
+                {
+
+                    MessageBox.Show("Voorraad te laag");
+                } 
                 else
                 {
-                    MessageBox.Show("Saldo te laag");
+                                       MessageBox.Show("Saldo te laag");
                 }
             }
             else
             {
                 MessageBox.Show("Geen product gevonden met het zelfde productnummer");
             }
+            Getinfo();
 
+        }
 
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            BeheerTool Beheerder = new BeheerTool();
+            Beheerder.ShowDialog();
+
+        }
+
+        private void Button19_Click(object sender, EventArgs e)
+        {
+
+            button19.BackgroundImage = null;
         }
     }
 }

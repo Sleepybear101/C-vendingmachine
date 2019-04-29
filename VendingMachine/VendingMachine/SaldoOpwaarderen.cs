@@ -27,6 +27,8 @@ namespace VendingMachine
             labelHuidigeSaldo.Text = textBoxSaldo.Text;
             _Form1.labelSaldoUser.Text = "" + labelHuidigeSaldo.Text;
             MessageBox.Show("Saldo is opgewaardeerd");
+            this.Close();
+
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace VendingMachine
                 textBoxSaldo.Text = "";
             }
 
- if (counter > 4)
+            if (counter > 4)
             {
                 MessageBox.Show("U heeft het maximale aantal munten bereikt");
                 button10Cent.Enabled = false;
@@ -87,6 +89,10 @@ namespace VendingMachine
             }
             button2Euro.Enabled = false;
             }
+
+        private void formcLOSEd()
+        {
+         _Form1.Getinfo();
         }
     }
 }
