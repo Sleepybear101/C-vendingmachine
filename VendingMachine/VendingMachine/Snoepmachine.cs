@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace VendingMachine
         public Snoepmachine()
         {
             InitializeComponent();
-            pnlProduct.Controls.Clear();
             uNummerPad2.OnUserControlButtonClicked += new uNummerPad.ButtonClickedEventHandler(uNummerPad2_OnUserControlButtonClicked);
              Getinfo();
         }
@@ -33,9 +33,13 @@ namespace VendingMachine
         Image returnImage;
         List<uProduct> Productenlist;
         List<string> idProducten;
-        public DataRow dr;
 
+        public double prijsProduct;
+        public int Voorraadl;
+        public double HuidigeSaldo;
 
+        public byte[] myImage;
+        //Ophalen van producten voor usercontrol
         public void Getinfo()
         {
             SqlDbConnection con = new SqlDbConnection();
@@ -47,12 +51,11 @@ namespace VendingMachine
             {
                 uProduct proitem = new uProduct(this);
 
-                byte[] myImage = (byte[])dr[5];
+                myImage = (byte[])dr[4];
 
-                id = dr[1].ToString();
                 Prijs = dr[2].ToString();
-                Nummer = dr[8].ToString();
-                Aantal = dr[4].ToString();
+                Nummer = dr[7].ToString();
+                Aantal = dr[3].ToString();
 
                 proitem.ProductPrijs = Prijs;
                 proitem.ProductNummer = Nummer;
@@ -63,8 +66,9 @@ namespace VendingMachine
 
                 Productenlist.Add(proitem);
 
-                idProducten.Add(id);
+                idProducten.Add(Nummer);
             }
+            pnlProduct.Controls.Clear();
             pnlProduct.Controls.AddRange(Productenlist.ToArray());
         }
 
@@ -82,21 +86,17 @@ namespace VendingMachine
 
             return returnImage;
         }
-        private void button20_Click(object sender, EventArgs e)
-        {
-            BeheerTool Beheerder = new BeheerTool();
-            Beheerder.ShowDialog();
-
-        }
+        //Knop naar beheerdertool
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.ActiveControl = textBoxNummer;
             textBoxNummer.Focus();
-            labelSaldoUser.Text = "€ 0,00";
+            labelSaldoUser.Text = "0,00";
         }
-
-        private void textBoxNummer_Enter(object sender, EventArgs e)
+      
+    private void textBoxNummer_Enter(object sender, EventArgs e)
         {
             focusedTextbox = (TextBox)sender;
         }
@@ -135,10 +135,10 @@ namespace VendingMachine
                 }
             }
         }
-
+        //Wisselgeld
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (labelSaldoUser.Text == "€ 0,00")
+            if (labelSaldoUser.Text == "0,00")
             {
                 string message = "Om wisselgeld terug te krijgen moet u eerst uw saldo verhogen. Wilt u uw Saldo verhogen?";
                 string title = "Uw saldo is leeg";
@@ -154,13 +154,82 @@ namespace VendingMachine
             else
             {
                 labelWisselgeldUser.Text = labelSaldoUser.Text;
-                labelSaldoUser.Text = "€ 0,00";
+                labelSaldoUser.Text = " 0,00";
+                labelWisselgeld.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
 
             }
 
         }
 
-      
+    
+        // kopen van product
+        private void Button16_Click_1(object sender, EventArgs e)
+        {
+            SqlDbConnection con = new SqlDbConnection();
+
+            if (idProducten.Contains(textBoxNummer.Text))
+            {
+          
+                con.SqlQuery("SELECT `Prijs`, `Id_product`, `Voorraad` ,`Afbeelding`FROM `producten` INNER JOIN `systeem` ON producten.id_product=systeem.Product where `Productnummer` =@nummer ");
+                con.Cmd.Parameters.Add("@Nummer", textBoxNummer.Text);
+
+                foreach (DataRow dr in con.QueryEx().Rows)
+                {
+
+                    prijsProduct = Convert.ToDouble(dr[0]);
+                    Voorraadl = Convert.ToInt32(dr[2]);
+                    Nummer = dr[1].ToString();
+                    myImage = (byte[])dr[3];
+                  
+                    HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
+                }
+
+                if ( HuidigeSaldo >= prijsProduct )
+                {
+                    Voorraadl = Voorraadl - 1;
+                    labelSaldoUser.Text = Convert.ToString(HuidigeSaldo - prijsProduct);
+                    con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `id_product`=@Nummer ");
+                    con.Cmd.Parameters.Add("@Voorraad", Voorraadl);
+                    con.Cmd.Parameters.Add("@Nummer", Nummer);
+
+                    con.NonQueryEx();
+
+                    con.SqlQuery("INSERT INTO `gekochtproduct`(`Product`, `Datetime`) VALUES (@Nummer,NOW())");
+                    con.Cmd.Parameters.Add("@Nummer", Nummer);
+                    con.NonQueryEx();
+                    Img1 = byteArrayToImage(myImage);
+                    button19.BackgroundImage = Img1;
+                }
+                else if(Voorraadl <= 0)
+                {
+
+                    MessageBox.Show("Voorraad te laag");
+                } 
+                else
+                {
+                                       MessageBox.Show("Saldo te laag");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen product gevonden met het zelfde productnummer");
+            }
+            Getinfo();
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            BeheerTool Beheerder = new BeheerTool();
+            Beheerder.ShowDialog();
+
+        }
+
+        private void Button19_Click(object sender, EventArgs e)
+        {
+
+            button19.BackgroundImage = null;
+        }
     }
 }
