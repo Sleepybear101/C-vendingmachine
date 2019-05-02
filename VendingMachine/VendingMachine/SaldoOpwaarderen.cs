@@ -56,7 +56,7 @@ namespace VendingMachine
 
             }
 
-            textBoxSaldo.Text = huidigeSaldo.ToString("C");
+            textBoxSaldo.Text = huidigeSaldo.ToString("");
         }
 
         private void TextBoxSaldo_TextChanged(object sender, EventArgs e)
