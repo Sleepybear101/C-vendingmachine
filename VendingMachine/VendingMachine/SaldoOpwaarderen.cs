@@ -21,6 +21,7 @@ namespace VendingMachine
         {
             InitializeComponent();
             _Form1 = form1;
+            labelHuidigeSaldo.Text = _Form1.labelSaldoUser.Text;
         }
 
         private void ButtonOpwaarderen_Click(object sender, EventArgs e)
@@ -41,6 +42,9 @@ namespace VendingMachine
             muntWaarde = decimal.Parse(button.Text);
 
             huidigeSaldo = huidigeSaldo + muntWaarde;
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Coin.wav");
+            player.Play();
 
             if (textBoxSaldo.Text == "0")
             {

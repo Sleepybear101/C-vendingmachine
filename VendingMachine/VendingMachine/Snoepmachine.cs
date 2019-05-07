@@ -137,7 +137,7 @@ namespace VendingMachine
         //Wisselgeld
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (labelSaldoUser.Text == "0,00")
+            if (labelSaldoUser.Text == "0,00" ||labelSaldoUser.Text == "€ 0,00")
             {
                 string message = "Om wisselgeld terug te krijgen moet u eerst uw saldo verhogen. Wilt u uw Saldo verhogen?";
                 string title = "Uw saldo is leeg";
@@ -153,8 +153,10 @@ namespace VendingMachine
             else
             {
                 labelWisselgeldUser.Text = labelSaldoUser.Text;
+                labelSaldoUser.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
-
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Refund.wav");
+                player.Play();
             }
         }
 
@@ -196,6 +198,11 @@ namespace VendingMachine
                     con.NonQueryEx();
                     Img1 = byteArrayToImage(myImage);
                     button19.BackgroundImage = Img1;
+
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Buy.wav");
+                    player.Play();
+
+
                 }
                 else if(Voorraadl <= 0)
                 {

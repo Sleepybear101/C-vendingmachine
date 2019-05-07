@@ -37,6 +37,7 @@
             this.textBoxSaldo = new System.Windows.Forms.TextBox();
             this.labelHuidigeSaldo = new System.Windows.Forms.Label();
             this.buttonOpwaarderen = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button10Cent
@@ -131,7 +132,7 @@
             // 
             this.labelHuidigeSaldo.AutoSize = true;
             this.labelHuidigeSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHuidigeSaldo.Location = new System.Drawing.Point(280, 254);
+            this.labelHuidigeSaldo.Location = new System.Drawing.Point(342, 336);
             this.labelHuidigeSaldo.Name = "labelHuidigeSaldo";
             this.labelHuidigeSaldo.Size = new System.Drawing.Size(29, 31);
             this.labelHuidigeSaldo.TabIndex = 9;
@@ -147,13 +148,24 @@
             this.buttonOpwaarderen.UseVisualStyleBackColor = true;
             this.buttonOpwaarderen.Click += new System.EventHandler(this.ButtonOpwaarderen_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(158, 336);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(178, 31);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Huidige saldo";
+            // 
             // SaldoOpwaarderen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(412, 329);
+            this.ClientSize = new System.Drawing.Size(472, 376);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonOpwaarderen);
             this.Controls.Add(this.labelHuidigeSaldo);
             this.Controls.Add(this.textBoxSaldo);
@@ -180,5 +192,6 @@
         private System.Windows.Forms.TextBox textBoxSaldo;
         private System.Windows.Forms.Label labelHuidigeSaldo;
         private System.Windows.Forms.Button buttonOpwaarderen;
+        private System.Windows.Forms.Label label2;
     }
 }
