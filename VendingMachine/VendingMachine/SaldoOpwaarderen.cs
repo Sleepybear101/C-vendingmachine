@@ -12,6 +12,7 @@ namespace VendingMachine
 {
     public partial class SaldoOpwaarderen : Form
     {
+        public decimal muntWaarde;
         public decimal huidigeSaldo;
         public Snoepmachine _Form1;
         int counter = 0;
@@ -33,12 +34,11 @@ namespace VendingMachine
 
         private void button_Click(object sender, EventArgs e)
         {
-            counter++;
-            labelCount.Text = counter.ToString();
+            ConvertCurrency convert = new ConvertCurrency();
 
             Button button = (Button)sender;
 
-            var muntWaarde = decimal.Parse(button.Text);
+            muntWaarde = decimal.Parse(button.Text);
 
             huidigeSaldo = huidigeSaldo + muntWaarde;
 
@@ -47,24 +47,21 @@ namespace VendingMachine
                 textBoxSaldo.Text = "";
             }
 
-            if (counter > 4)
+            if (textBoxSaldo.Text.Contains("€"))
             {
-                MessageBox.Show("U heeft het maximale aantal munten bereikt");
-                button10Cent.Enabled = false;
-                button20Cent.Enabled = false;
-                button50Cent.Enabled = false;
-                button1Euro.Enabled = false;
-                button2Euro.Enabled = false;
-
+                textBoxSaldo.Text = convert.ConvertCurrencyToInt(textBoxSaldo.Text).ToString();
             }
 
-            textBoxSaldo.Text = huidigeSaldo.ToString("");
+
+            textBoxSaldo.Text = (Convert.ToDecimal(huidigeSaldo) / 100).ToString("C");
         }
+
+
 
         private void TextBoxSaldo_TextChanged(object sender, EventArgs e)
         {
 
-            if (textBoxSaldo.Text == " 5" )
+            if (textBoxSaldo.Text == "€ 5,00")
             {
                 MessageBox.Show("U heeft het maximale saldo van € 5,00 bereikt");
                 button10Cent.Enabled = false;
@@ -75,23 +72,18 @@ namespace VendingMachine
                 textBoxSaldo.Enabled = false;
             }
 
-            if (textBoxSaldo.Text == "6")
+            if (textBoxSaldo.Text == "€ 6,00")
             {
-                MessageBox.Show("Saldo hoger dan € 5,00 euro is niet toegestaan.");
-               textBoxSaldo.Text = "4,00";
-               button10Cent.Enabled = false;
-               button20Cent.Enabled = false;
-               button50Cent.Enabled = false;
-               button1Euro.Enabled = false;
-               button2Euro.Enabled = false;
-               textBoxSaldo.Enabled = false;
+                MessageBox.Show("U bent over het maximale saldo gegaan");
+                MessageBox.Show("2 euro is teruggestort");
+                muntWaarde = 0;
+                huidigeSaldo = 400;
+                textBoxSaldo.Text = ("€ 4,00");
             }
-            button2Euro.Enabled = false;
-            }
-
+        }
         private void formcLOSEd()
         {
-         _Form1.Getinfo();
+            _Form1.Getinfo();
         }
     }
 }

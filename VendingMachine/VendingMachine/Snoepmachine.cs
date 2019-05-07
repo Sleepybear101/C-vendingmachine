@@ -53,7 +53,7 @@ namespace VendingMachine
 
                 myImage = (byte[])dr[4];
 
-                Prijs = dr[2].ToString();
+                Prijs = (Convert.ToDouble(dr[2]) / 100).ToString("C");
                 Nummer = dr[7].ToString();
                 Aantal = dr[3].ToString();
 
@@ -87,8 +87,7 @@ namespace VendingMachine
             return returnImage;
         }
         //Knop naar beheerdertool
-       
-
+      
         private void Form1_Load(object sender, EventArgs e)
         {
             this.ActiveControl = textBoxNummer;
@@ -154,15 +153,11 @@ namespace VendingMachine
             else
             {
                 labelWisselgeldUser.Text = labelSaldoUser.Text;
-                labelSaldoUser.Text = " 0,00";
-                labelWisselgeld.Text = "€ 0,00";
                 MessageBox.Show("Wisselgeld is teruggestort");
 
             }
-
         }
 
-    
         // kopen van product
         private void Button16_Click_1(object sender, EventArgs e)
         {
@@ -176,19 +171,20 @@ namespace VendingMachine
 
                 foreach (DataRow dr in con.QueryEx().Rows)
                 {
+                    ConvertCurrency convert = new ConvertCurrency();
 
                     prijsProduct = Convert.ToDouble(dr[0]);
                     Voorraadl = Convert.ToInt32(dr[2]);
                     Nummer = dr[1].ToString();
                     myImage = (byte[])dr[3];
                   
-                    HuidigeSaldo = Convert.ToDouble(labelSaldoUser.Text);
+                    HuidigeSaldo = convert.ConvertCurrencyToInt(labelSaldoUser.Text);
                 }
 
                 if ( HuidigeSaldo >= prijsProduct )
                 {
                     Voorraadl = Voorraadl - 1;
-                    labelSaldoUser.Text = Convert.ToString(HuidigeSaldo - prijsProduct);
+                    labelSaldoUser.Text = (Convert.ToDouble(HuidigeSaldo - prijsProduct) / 100).ToString("C");
                     con.SqlQuery("UPDATE `producten` SET `Voorraad`=@Voorraad WHERE `id_product`=@Nummer ");
                     con.Cmd.Parameters.Add("@Voorraad", Voorraadl);
                     con.Cmd.Parameters.Add("@Nummer", Nummer);
@@ -208,7 +204,7 @@ namespace VendingMachine
                 } 
                 else
                 {
-                                       MessageBox.Show("Saldo te laag");
+                    MessageBox.Show("Saldo te laag");
                 }
             }
             else

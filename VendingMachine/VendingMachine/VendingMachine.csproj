@@ -59,6 +59,7 @@
     <Compile Include="BeheerTool.Designer.cs">
       <DependentUpon>BeheerTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConvertCurrency.cs" />
     <Compile Include="Snoepmachine.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -24,6 +24,10 @@ namespace VendingMachine
             _Form1 = form1;
         }
 
+        public BeheerTool()
+        {
+        }
+
         private void mySqlConnection()
         {
 

@@ -55,7 +55,7 @@ namespace VendingMachine
             set
             {
                 Prijs = value;
-                label1.Text = "€" + Prijs;
+                label1.Text = Prijs;
             }
             get
             {
@@ -77,8 +77,5 @@ namespace VendingMachine
                 pictureBox1.Image = value;
             }
         }
-
-
-
     }
 }
