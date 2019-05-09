@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    class ConvertCurrency
+    public class ConvertCurrency
     {
         public int ConvertCurrencyToInt(string currencyValue)
         {
@@ -21,6 +21,11 @@ namespace VendingMachine
             int currentBalanceValue = Int32.Parse(intCurrentBalance.ToString());
 
             return currentBalanceValue;
+        }
+
+        internal object CurrencyToInt(string text)
+        {
+            throw new NotImplementedException();
         }
     }
 }

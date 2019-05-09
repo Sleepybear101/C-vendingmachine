@@ -15,7 +15,6 @@ namespace VendingMachine
         public decimal muntWaarde;
         public decimal huidigeSaldo;
         public Snoepmachine _Form1;
-        int counter = 0;
 
         public SaldoOpwaarderen(Snoepmachine form1)
         {
@@ -65,6 +64,11 @@ namespace VendingMachine
         private void TextBoxSaldo_TextChanged(object sender, EventArgs e)
         {
 
+            if (textBoxSaldo.Text == "0")
+            {
+                MessageBox.Show("Kies een munt");
+            }
+
             if (textBoxSaldo.Text == "€ 5,00")
             {
                 MessageBox.Show("U heeft het maximale saldo van € 5,00 bereikt");
@@ -76,7 +80,7 @@ namespace VendingMachine
                 textBoxSaldo.Enabled = false;
             }
 
-            if (textBoxSaldo.Text == "€ 6,00")
+            if (textBoxSaldo.Text == "€ 6,00" || textBoxSaldo.Text == "€ 5,10")
             {
                 MessageBox.Show("U bent over het maximale saldo gegaan");
                 MessageBox.Show("2 euro is teruggestort");

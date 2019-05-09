@@ -88,6 +88,7 @@
     <Compile Include="uProduct.Designer.cs">
       <DependentUpon>uProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wisselgeld.cs" />
     <EmbeddedResource Include="BeheerTool.resx">
       <DependentUpon>BeheerTool.cs</DependentUpon>
     </EmbeddedResource>

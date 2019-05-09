@@ -28,6 +28,9 @@ namespace VendingMachine
         public string Aantal;
         public Image Img1;
 
+        Wisselgeld wisselgeld = new Wisselgeld();
+        ConvertCurrency convert = new ConvertCurrency();
+
         private TextBox focusedTextbox = null;
 
         Image returnImage;
@@ -137,6 +140,8 @@ namespace VendingMachine
         //Wisselgeld
         private void Button1_Click(object sender, EventArgs e)
         {
+            ConvertCurrency convert = new ConvertCurrency();
+
             if (labelSaldoUser.Text == "0,00" ||labelSaldoUser.Text == "€ 0,00")
             {
                 string message = "Om wisselgeld terug te krijgen moet u eerst uw saldo verhogen. Wilt u uw Saldo verhogen?";
@@ -152,11 +157,18 @@ namespace VendingMachine
 
             else
             {
+                var currentBalanceValue = convert.ConvertCurrencyToInt(labelSaldoUser.Text);
+                wisselgeld.SetTotaalMunten(currentBalanceValue);
+
+                MessageBox.Show( wisselgeld.TienCent.ToString() + " X 0,10" + Environment.NewLine +
+                                   wisselgeld.TwintigCent.ToString() + " X 0,20" + Environment.NewLine +
+                                   wisselgeld.VijftigCent.ToString() + " X 0,50" + Environment.NewLine +
+                                   wisselgeld.Euro.ToString() + " X 1,00" + Environment.NewLine +
+                                   wisselgeld.TweeEuro.ToString() + " X 2,00");
+
+
                 labelWisselgeldUser.Text = labelSaldoUser.Text;
                 labelSaldoUser.Text = "€ 0,00";
-                MessageBox.Show("Wisselgeld is teruggestort");
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Refund.wav");
-                player.Play();
             }
         }
 
