@@ -39,27 +39,24 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(12, 15);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchTextBox.Location = new System.Drawing.Point(9, 12);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(424, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(319, 20);
             this.searchTextBox.TabIndex = 28;
             this.searchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged_1);
             // 
             // textBoxVoorraad
             // 
-            this.textBoxVoorraad.Location = new System.Drawing.Point(595, 218);
-            this.textBoxVoorraad.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVoorraad.Location = new System.Drawing.Point(446, 177);
             this.textBoxVoorraad.Name = "textBoxVoorraad";
-            this.textBoxVoorraad.Size = new System.Drawing.Size(53, 22);
+            this.textBoxVoorraad.Size = new System.Drawing.Size(41, 20);
             this.textBoxVoorraad.TabIndex = 23;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(484, 249);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Location = new System.Drawing.Point(363, 202);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(151, 56);
+            this.btnUpdate.Size = new System.Drawing.Size(113, 46);
             this.btnUpdate.TabIndex = 22;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -68,33 +65,36 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 37);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(463, 248);
+            this.dataGridView1.Size = new System.Drawing.Size(347, 202);
             this.dataGridView1.TabIndex = 29;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(481, 218);
+            this.label1.Location = new System.Drawing.Point(361, 177);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Nieuw voorraad";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // BeheerTool
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(661, 308);
+            this.ClientSize = new System.Drawing.Size(496, 250);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.textBoxVoorraad);
             this.Controls.Add(this.btnUpdate);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BeheerTool";
             this.Text = "BeheerTool";
             this.Click += new System.EventHandler(this.BtnUpdate_Click);

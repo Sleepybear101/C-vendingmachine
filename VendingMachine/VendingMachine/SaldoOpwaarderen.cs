@@ -68,8 +68,8 @@ namespace VendingMachine
 
 
             huidigeSaldo = huidigeSaldo + muntWaarde;
-            //System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Coin.wav");
-            //player.Play();
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Coin.wav");
+            player.Play();
 
             if (textBoxSaldo.Text == "0")
             {
