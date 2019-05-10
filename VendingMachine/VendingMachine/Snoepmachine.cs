@@ -211,8 +211,8 @@ namespace VendingMachine
                     Img1 = byteArrayToImage(myImage);
                     button19.BackgroundImage = Img1;
 
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Buy.wav");
-                    player.Play();
+                   // System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Buy.wav");
+                   // player.Play();
 
 
                 }

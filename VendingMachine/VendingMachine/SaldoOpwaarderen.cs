@@ -12,10 +12,12 @@ namespace VendingMachine
 {
     public partial class SaldoOpwaarderen : Form
     {
+        SqlDbConnection con;
         public decimal muntWaarde;
         public decimal huidigeSaldo;
         public Snoepmachine _Form1;
-
+        public decimal clickMuntWaarde;
+        public int ClickMunt;
         public SaldoOpwaarderen(Snoepmachine form1)
         {
             InitializeComponent();
@@ -37,13 +39,37 @@ namespace VendingMachine
             ConvertCurrency convert = new ConvertCurrency();
 
             Button button = (Button)sender;
-
+            con = new SqlDbConnection();
             muntWaarde = decimal.Parse(button.Text);
 
-            huidigeSaldo = huidigeSaldo + muntWaarde;
+            if (muntWaarde == clickMuntWaarde)
+            {
+      
 
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Coin.wav");
-            player.Play();
+               ClickMunt++;
+            }
+            else
+            {
+
+                con.SqlQuery("UPDATE `munt` SET `VoorraadMunt`=@Clickmunt WHERE `Soortmunt` =@Waarde");
+                con.Cmd.Parameters.Add("@Clickmunt", ClickMunt);
+                con.Cmd.Parameters.Add("@Waarde", clickMuntWaarde);
+                con.NonQueryEx();
+                clickMuntWaarde = muntWaarde;
+                con.SqlQuery("SELECT `VoorraadMunt` FROM `munt` WHERE `Soortmunt`=@Waarde");
+                con.Cmd.Parameters.Add("@Waarde", clickMuntWaarde);
+                foreach (DataRow dr in con.QueryEx().Rows)
+                {
+                    ClickMunt = Convert.ToInt32(dr[0]);
+
+                }
+                ClickMunt++;
+            }
+
+
+            huidigeSaldo = huidigeSaldo + muntWaarde;
+            //System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Gebruiker\Desktop\Sound\Coin.wav");
+            //player.Play();
 
             if (textBoxSaldo.Text == "0")
             {
@@ -78,6 +104,7 @@ namespace VendingMachine
                 button1Euro.Enabled = false;
                 button2Euro.Enabled = false;
                 textBoxSaldo.Enabled = false;
+
             }
 
             if (textBoxSaldo.Text == "€ 6,00" || textBoxSaldo.Text == "€ 5,10")
@@ -87,7 +114,13 @@ namespace VendingMachine
                 muntWaarde = 0;
                 huidigeSaldo = 400;
                 textBoxSaldo.Text = ("€ 4,00");
+
             }
+
+            con.SqlQuery("UPDATE `munt` SET `VoorraadMunt`=@Clickmunt WHERE `Soortmunt` =@Waarde");
+            con.Cmd.Parameters.Add("@Clickmunt", ClickMunt);
+            con.Cmd.Parameters.Add("@Waarde", clickMuntWaarde);
+            con.NonQueryEx();
         }
         private void formcLOSEd()
         {
