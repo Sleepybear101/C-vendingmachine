@@ -236,9 +236,8 @@ namespace VendingMachine
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            BeheerTool Beheerder = new BeheerTool();
+            BeheerTool Beheerder = new BeheerTool(new Snoepmachine());
             Beheerder.ShowDialog();
-
         }
 
         private void Button19_Click(object sender, EventArgs e)
